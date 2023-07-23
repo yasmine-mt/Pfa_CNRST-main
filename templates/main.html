@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+    Gestion des équipements scientifiques
+</title>
+  <!-- Spécifiez l'image de votre logo ici -->
+  <link rel="icon" type="image/png" href="{% static 'images/cnrst_logo.png' %}">
+    <!-- CSS only --> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+   
+{% include 'base/navbar.html' %}
+{% block content %}
+{% endblock content%}
+</body>
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+body {
+    padding-bottom: 80px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-left: 400px;
+    padding: 5px 0;
+    background-color: #E4E9F7; 
+    border-top: 1px solid #ddd; 
+}
+
+.footer p {
+        font-weight: bold; 
+        font-family: Arial, sans-serif; 
+        font-size: 16px; 
+    }
+</style>
+
+<footer class="footer text-dark">
+    <div class="container py-3">
+        <p class="mb-0">Gestion des équipements dans la CNRST &copy; {{ year }}</p>
+    </div>
+</footer>
+\
+   <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</html>
