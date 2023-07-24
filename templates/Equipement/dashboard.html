@@ -73,13 +73,14 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
-
-/* Added custom styles for icons */
-.icon {
+.fa-clock-rotate-left{
   font-size: 32px;
   margin-right: 10px;
-  color: #f48c06;
+  color: #06aaf5;
 }
+
+/* Added custom styles for icons */
+
 .icon-lab {
   font-size: 32px;
   margin-right: 10px;
@@ -135,8 +136,8 @@ background-color: #ffffff;
    </div>
     <div class="activity">
         <div class="title">
-            <i class="uil uil-clock-three"></i>
-            <span class="text">Les trois derniers équipements ajoutés</span>
+          <i class="fa-solid fa-clock-rotate-left"></i>
+            <span class="text"> Les trois derniers équipements ajoutés</span>
         </div>
         <table class="table"> <!-- Use a table to display the equipment data -->
             <thead>
@@ -158,4 +159,6 @@ background-color: #ffffff;
         </table>
     </div>
 </div>
+
+
 {% endblock content%}

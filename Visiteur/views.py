@@ -1,4 +1,6 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Visiteur 
 # Create your views here.
-def v3(request):
-    return HttpResponse('Visiteur')
+def view_Graphic(request):
+    
+    return render(request, 'Equipement/dashboard.html')

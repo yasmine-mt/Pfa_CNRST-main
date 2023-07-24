@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Equipement
 from Laboratoire.models import Laboratoire
+from Visiteur.models import Visiteur
 from .forms import EquipementForm
 from Etablissement.models import Etablissement
 # Create your views here.
@@ -14,10 +15,10 @@ from Etablissement.models import Etablissement
 def accueil(request):
     equipements = Equipement.objects.all()
     laboratoires= Laboratoire.objects.all()
-
+    visiteurs = Visiteur.objects.all()
     total_equipements = equipements.count()
     total_laboratoires= laboratoires.count()
-
+    total_visiteurs = visiteurs.count() 
     derniers_equipements = equipements.order_by('-Date_Acquisition')[:3]
  
 
@@ -25,7 +26,9 @@ def accueil(request):
         'total_equipements': total_equipements,
         'total_laboratoires': total_laboratoires,
         'equipements': equipements,
-        'derniers_equipements': derniers_equipements
+        'derniers_equipements': derniers_equipements,
+        'visiteurs':visiteurs,
+        'total_visiteurs': total_visiteurs,
     }
     return render(request, 'Equipement/dashboard.html', context)
 
