@@ -9,8 +9,30 @@ from Laboratoire.models import Laboratoire
 from .forms import EquipementForm
 from Etablissement.models import Etablissement
 # Create your views here.
+
+
 def accueil(request):
-    return render(request,'Equipement/dashboard.html')
+    equipements = Equipement.objects.all()
+    laboratoires= Laboratoire.objects.all()
+
+    total_equipements = equipements.count()
+    total_laboratoires= laboratoires.count()
+
+    derniers_equipements = equipements.order_by('-Date_Acquisition')[:3]
+ 
+
+    context = {
+        'total_equipements': total_equipements,
+        'total_laboratoires': total_laboratoires,
+        'equipements': equipements,
+        'derniers_equipements': derniers_equipements
+    }
+    return render(request, 'Equipement/dashboard.html', context)
+
+
+
+
+
 def showEquipement (request):
     equipements=Equipement.objects.all()
     context={'equipements':equipements }
@@ -18,7 +40,6 @@ def showEquipement (request):
 
 def map(request):
     return render(request,'Equipement/map.html')
-
 
     
 def import_csv(request):
