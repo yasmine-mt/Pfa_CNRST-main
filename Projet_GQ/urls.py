@@ -8,4 +8,5 @@ urlpatterns = [
     path('Laboratoire/',include('Laboratoire.urls')),
     path('Etablissement/',include('Etablissement.urls')),
     path('Visiteur/',include('Visiteur.urls')),
+    path('compte/',include('compte.urls')),
 ]

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Laboratoire',
     'Etablissement',
     'Visiteur',
+    'compte',
     'django_filters',
     'auditlog',
 ]
