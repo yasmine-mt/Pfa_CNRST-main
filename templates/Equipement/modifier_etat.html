@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block content %}
+<body>
+    <h2>Modifier l'état de l'équipement {{ equipement.Reference }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nouvel_etat">Nouvel état :</label>
+        <select name="nouvel_etat">
+            <option value="Installé">Installé</option>
+            <option value="en panne">En panne</option>
+            <option value
+="Fonctionnel">Fonctionnel</option>
+</select>
+<input type="submit" value="Modifier">
+</form>
+
+
+{% endblock content%}
