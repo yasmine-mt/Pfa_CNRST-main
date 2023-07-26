@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'compte',
     'django_filters',
     'auditlog',
+    
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,13 @@ MEDIA_URL='/images/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+#Email_Verification
+
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_USER = 'madame746@gmail.com'  
+EMAIL_HOST_PASSWORD = 'zchtzrflefxjlymx'  
+EMAIL_PORT = 587  
