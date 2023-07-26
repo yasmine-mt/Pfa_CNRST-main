@@ -9,9 +9,10 @@ from Laboratoire.models import Laboratoire
 from Visiteur.models import Visiteur
 from .forms import EquipementForm
 from Etablissement.models import Etablissement
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required(login_url='connexion')
 def accueil(request):
     equipements = Equipement.objects.all()
     laboratoires= Laboratoire.objects.all()
@@ -35,16 +36,17 @@ def accueil(request):
 
 
 
-
+@login_required(login_url='connexion')
 def showEquipement (request):
     equipements=Equipement.objects.all()
     context={'equipements':equipements }
     return render(request,'Equipement/xmateriel.html',context)
 
+@login_required(login_url='connexion')
 def map(request):
     return render(request,'Equipement/map.html')
 
-    
+@login_required(login_url='connexion')   
 def import_csv(request):
     if request.method == 'POST' and request.FILES.get('csv_file'):
         csv_file = request.FILES['csv_file']
@@ -123,7 +125,7 @@ def import_csv(request):
 
     return render(request, 'Equipement/import_csv.html')
 
-
+@login_required(login_url='connexion')
 def ajouter_equipement(request):
     form = EquipementForm()
     if request.method == 'POST': 
@@ -134,6 +136,7 @@ def ajouter_equipement(request):
     context={'form':form}
     return render(request, 'Equipement/ajouter_equipement.html',context)
 
+@login_required(login_url='connexion')
 def supprimer_equipement(request,pk):
     equipement=Equipement.objects.get(Reference=pk)
     if request.method == 'POST':
@@ -142,7 +145,7 @@ def supprimer_equipement(request,pk):
     context ={'item':equipement}
     return render(request,'Equipement/supprimer_equipement.html',context)
 
-
+@login_required(login_url='connexion')
 def search_equipments(request):
     search_query = request.GET.get('Marque')  
     equipements = Equipement.objects.all()
