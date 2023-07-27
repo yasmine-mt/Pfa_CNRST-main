@@ -1,0 +1,45 @@
+# Utilisez une image Docker avec Python pour construire et tester votre application
+image: python:3.10
+
+# Définition des étapes du pipeline
+stages:
+  - build
+  - test
+  - deploy_staging
+  - deploy_production
+
+# Étape de build
+build:
+  stage: build
+  script:
+    - python -m venv venv # Créez un environnement virtuel
+    - source venv/bin/activate # Activez l'environnement virtuel
+    - pip install -r requirements.txt # Installez les dépendances depuis le fichier requirements.txt
+
+# Étape de test
+test:
+  stage: test
+  script:
+    - source venv/bin/activate # Activez l'environnement virtuel
+    - python manage.py test # Exécutez les tests unitaires
+    # Vous pouvez ajouter d'autres commandes pour les tests de qualité, comme flake8, black, etc.
+
+# Étape de déploiement sur l'environnement de pré-production (staging)
+deploy_staging:
+  stage: deploy_staging
+  script:
+    - source venv/bin/activate # Activez l'environnement virtuel
+    - python manage.py migrate # Effectuez les migrations de la base de données
+    # Autres étapes de configuration pour l'environnement de pré-production
+    # Exemple : collectstatic pour les fichiers statiques
+
+# Étape de déploiement sur l'environnement de production
+deploy_production:
+  stage: deploy_production
+  script:
+    - source venv/bin/activate # Activez l'environnement virtuel
+    - python manage.py migrate # Effectuez les migrations de la base de données
+    # Autres étapes de configuration pour l'environnement de production
+    # Exemple : collectstatic pour les fichiers statiques
+  only:
+    - master # Déployer uniquement lorsque le code est fusionné dans la branche master
