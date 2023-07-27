@@ -23,7 +23,7 @@ def signup(request):
             user.save()  
             # Obtenir le domaine du site actuel  
             current_site = get_current_site(request)  
-            mail_subject = 'Le lien d\'activation a été envoyé à votre adresse e-mail'  
+            mail_subject = 'Le lien d\'activation de votre compte '  
             message = render_to_string('acc_active_email.html', {  
                 'user': user,  
                 'domain': current_site.domain,  

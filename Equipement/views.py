@@ -37,10 +37,20 @@ def accueil(request):
 
 
 @login_required(login_url='connexion')
-def showEquipement (request):
-    equipements=Equipement.objects.all()
-    context={'equipements':equipements }
-    return render(request,'Equipement/xmateriel.html',context)
+
+def showEquipement(request):
+    equipements = Equipement.objects.all()
+
+    # Récupérer toutes les marques distinctes existantes
+    marques_distinctes = Equipement.objects.values_list('Marque', flat=True).distinct()
+
+    context = {
+        'equipements': equipements,
+        'marques_distinctes': marques_distinctes,
+    }
+
+    return render(request, 'Equipement/xmateriel.html', context)
+
 
 @login_required(login_url='connexion')
 def map(request):
